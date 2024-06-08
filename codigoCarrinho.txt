@@ -6,22 +6,21 @@
 #define pinBtRx 7    // Pino Rx do módulo Bluetooth
 #define pinBtTx 8    // Pino Tx do módulo Bluetooth
 
-// Biblioteca para comunicação com módulo Bluetooth
+// Biblioteca para comunicação com módulo Bluetooth.
 #include <SoftwareSerial.h> // Inclui a biblioteca SoftwareSerial
-SoftwareSerial bluetooth(pinBtRx, pinBtTx); // Cria uma instância de SoftwareSerial
+SoftwareSerial bluetooth(pinBtRx, pinBtTx); // Cria uma instância de SoftwareSerial.
 
 void setup() {
-  // Configura o estado das portas do Arduino como saídas para controlar os motores
-  pinMode(pinMotor1A, OUTPUT); // Configura pinMotor1A como saída
-  pinMode(pinMotor1B, OUTPUT); // Configura pinMotor1B como saída
-  pinMode(pinMotor2A, OUTPUT); // Configura pinMotor2A como saída
-  pinMode(pinMotor2B, OUTPUT); // Configura pinMotor2B como saída
+  // Configura o estado das portas do Arduino como saídas para controlar os motores.
+  pinMode(pinMotor1A, OUTPUT); // Configura pinMotor1A como saída.
+  pinMode(pinMotor1B, OUTPUT); // Configura pinMotor1B como saída.
+  pinMode(pinMotor2A, OUTPUT); // Configura pinMotor2A como saída.
+  pinMode(pinMotor2B, OUTPUT); // Configura pinMotor2B como saída.
 
   // Configura os pinos adicionais como saídas e define-os como LOW
   pinMode(13, OUTPUT); // Configura pino 13 como saída
   digitalWrite(13, LOW); // Define pino 13 como LOW
-  digitalWrite(2, LOW); // Define pino 2 como LOW (redundante pois pinMotor1A já é 2)
-  digitalWrite(3, LOW); // Define pino 3 como LOW (redundante pois pinMotor1B já é 3)
+
 
   // Inicia a comunicação serial para monitorar o que está acontecendo pelo monitor serial
   Serial.begin(9600); // Inicia comunicação serial a 9600 bps
@@ -31,14 +30,14 @@ void setup() {
 }
 
 void loop() {
-  // Variável para armazenar o dado recebido via Bluetooth
+  // Variável para armazenar o dado recebido via Bluetooth.
   char recebido; // Declara variável 'recebido' para armazenar o dado recebido
 
   // Verifica se há dados disponíveis no módulo Bluetooth
-  if (bluetooth.available()) { // Se há dados disponíveis
-    recebido = bluetooth.read(); // Lê o dado recebido e armazena em 'recebido'
-    Serial.write(recebido); // Envia o dado recebido para o monitor serial
-    Serial.println("- "); // Adiciona uma nova linha no monitor serial
+  if (bluetooth.available()) { // Se há dados disponíveis.
+    recebido = bluetooth.read(); // Lê o dado recebido e armazena em 'recebido'.
+    Serial.write(recebido); // Envia o dado recebido para o monitor serial.
+    Serial.println("- "); // Adiciona uma nova linha no monitor serial.
   }
 
   // Comandos de controle de movimento com base no dado recebido
